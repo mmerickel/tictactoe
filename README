@@ -28,16 +28,13 @@ is a left-arrow (<--). Notifications are denoted by !!!.
 
 The client must first establish a session with the server:
 
---> /api/connect
-    client_id=920d14a9a2204d8bbc553ef94f6d6773&name=stan
-<-- {"client_id": "920d14a9a2204d8bbc553ef94f6d6773", "name": "stan"}
-
 --> /api/play
-    client_id=920d14a9a2204d8bbc553ef94f6d6773
-<-- {"opponent_name": "kyle", "player": "X", "game_id": "eZUcx",
-     "board": "         ", "turn": "X"}
+    client_id=920d14a9a2204d8bbc553ef94f6d6773&name=stan
+<-- {"client_id": "920d14a9a2204d8bbc553ef94f6d6773", "name": "stan",
+     "game_id": "eZUcx"}
 
 !!! {"type": "status", "board": "_________", "turn": "X",
+     "playerX": "stan", "playerO": "kyle",
      "update_id": 1, "timestamp": "2011-06-05T06:26:27.088843"}
 
 !!! {"type": "connect", "name": "stan", "player": "X",
@@ -105,7 +102,7 @@ message in the format:
 It is safe for the client to assume that if the 'error' key is present in
 the response, the request was not successful.
 
-/api/connect
+/api/play
 -------
 Method: POST
 Params:
@@ -115,6 +112,10 @@ Params:
         can be used later to resume a session.
     name (optional)
         Identifier for user. Will be randomly assigned if unspecified.
+    resume (optional)
+        Boolean "true" or "false" signifying whether to attempt to resume
+        a previous game. If this is "true" and there are no games to resume,
+        this will fail. Defaults to "false".
 Response:
     client_id
         The specified client identifier if provided, otherwise a new randomly
@@ -122,30 +123,8 @@ Response:
     name
         The specified user name if provided, otherwise a new randomly
         generated name from the server (Guest1234).
-
-/api/play
----------
-Method: POST
-Params:
-    client_id
-        Identifier for the client.
-    resume (optional)
-        Boolean "true" or "false" signifying whether to attempt to resume
-        a previous game. If this is "true" and there are no games to resume,
-        this will fail. Defaults to "false".
-Response:
-    opponent_name
-        The name of the opponent.
-    opponent_last_visit
-        The last time the opponent was available in ISO format (UTC).
-    player
-        'X' or 'O' signifying your position on the board.
     game_id
         Identifier used when connecting to the server to receive notifications.
-    board
-        The board state, as described in the "Board" section above.
-    turn
-        'X' or 'O' signifying whose turn it currently is.
 
 /api/quit
 ---------
@@ -197,10 +176,10 @@ Params:
     name
         Name of player connecting to the game.
     player
-        'X' or 'O' or 'G' where G is for guests.
+        true or false depending on whether the client is a player
 
     Disconnect Updates
-    ~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~
     type - "disconnect"
     timestamp
         Timestamp for this update in ISO format (UTC).
@@ -210,10 +189,10 @@ Params:
     name
         Name of player connecting to the game.
     player
-        'X' or 'O' or 'G' where G is for guests.
+        true or false depending on whether the client is a player
 
     Status Updates
-    ~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~
     type - "status"
     timestamp
         Timestamp for this update in ISO format (UTC).
@@ -224,6 +203,10 @@ Params:
         The board state, as described in the "Board" section above.
     turn
         'X' or 'O' signifying whose turn it currently is.
+    playerX
+        Name of 'X' player.
+    playerO
+        Name of 'O' player.
 
     Board Updates
     ~~~~~~~~~~~~~
