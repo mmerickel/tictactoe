@@ -35,13 +35,13 @@ The client must first establish a session with the server:
 
 !!! {"type": "status", "board": "_________", "turn": "X",
      "playerX": "stan", "playerO": "kyle",
-     "update_id": 1, "timestamp": "2011-06-05T06:26:27.088843"}
+     "cursor": 1, "timestamp": "2011-06-05T06:26:27.088843"}
 
 !!! {"type": "connect", "name": "stan", "player": "X",
-     "update_id": 2, "timestamp": "2011-06-05T06:26:27.088843"}
+     "cursor": 2, "timestamp": "2011-06-05T06:26:27.088843"}
 
 !!! {"type": "connect", "name": "kyle", "player": "O",
-     "update_id": 3, "timestamp": "2011-06-05T06:26:27.088843"}
+     "cursor": 3, "timestamp": "2011-06-05T06:26:27.088843"}
 
 At this point the clients should connect to the server to receive
 notifications on their new game:
@@ -55,14 +55,14 @@ X plays first:
 
 !!! {"type": "move", "board": "__X______", "turn": "O",
      "player": "X", "position": 2,
-     "update_id": 10, "timestamp": "2011-06-05T06:26:27.088843"}
+     "cursor": 10, "timestamp": "2011-06-05T06:26:27.088843"}
 
 --> /api/move
     client_id=7c288e7e8c1341ce9f11b9aaf0e1a6de&position=0
 
 !!! {"type": "move", "board": "O_X______", "turn": "X",
      "player": "O", "position": 2,
-     "update_id": 12, "timestamp": "2011-06-05T06:26:27.088843"}
+     "cursor": 12, "timestamp": "2011-06-05T06:26:27.088843"}
 
 ...
 
@@ -71,10 +71,10 @@ X plays first:
 
 !!! {"type": "move", "board": "O_X_OXX_O", "winner": "O",
      "player": "O", "position": 8,
-     "update_id": 15, "timestamp": "2011-06-05T06:26:27.088843"}
+     "cursor": 15, "timestamp": "2011-06-05T06:26:27.088843"}
 
 !!! {"type": "disconnect", "name": "kyle", "player": "O",
-     "update_id": 20, "timestamp": "2011-06-05T06:26:27.088843"}
+     "cursor": 20, "timestamp": "2011-06-05T06:26:27.088843"}
 
 Methods
 =======
@@ -159,10 +159,10 @@ Response:
 ----------------------
 Method: GET
 Params:
-    last_update_id (optional)
-        The last update identifier.
+    cursor (optional)
+        The cursor is used to avoid missing updates between requests.
         If left unspecified the events will be replayed back from the start of
-        the game in order. Otherwise, only events after the specified id will
+        the game in order. Otherwise, only events after the cursor will
         be replayed.
 
     Connect Updates
@@ -170,33 +170,33 @@ Params:
     type - "connect"
     timestamp
         Timestamp for this update in ISO format (UTC).
-    update_id
+    cursor
         Integer representing this update. This is used such that clients can
         resume updates at the point they left off.
     name
         Name of player connecting to the game.
     player
-        true or false depending on whether the client is a player
+        true or false depending on whether the client is a player.
 
     Disconnect Updates
     ~~~~~~~~~~~~~~~~~~
     type - "disconnect"
     timestamp
         Timestamp for this update in ISO format (UTC).
-    update_id
+    cursor
         Integer representing this update. This is used such that clients can
         resume updates at the point they left off.
     name
-        Name of player connecting to the game.
+        Name of player disconnecting from the game.
     player
-        true or false depending on whether the client is a player
+        true or false depending on whether the client is a player.
 
     Status Updates
     ~~~~~~~~~~~~~~
     type - "status"
     timestamp
         Timestamp for this update in ISO format (UTC).
-    update_id
+    cursor
         Integer representing this update. This is used such that clients can
         resume updates at the point they left off.
     board
@@ -213,7 +213,7 @@ Params:
     type - "move"
     timestamp
         Timestamp for this update in ISO format (UTC).
-    update_id
+    cursor
         Integer representing this update. This is used such that clients can
         resume updates at the point they left off.
     board
@@ -235,7 +235,7 @@ Params:
     type - "chat"
     timestamp
         Timestamp for this update in ISO format (UTC).
-    update_id
+    cursor
         Integer representing this update. This is used such that clients can
         resume updates at the point they left off.
     name
@@ -248,7 +248,7 @@ Params:
     type - "end"
     timestamp
         Timestamp for this update in ISO format (UTC).
-    update_id
+    cursor
         Integer representing this update. This is used such that clients can
         resume updates at the point they left off.
     reason
