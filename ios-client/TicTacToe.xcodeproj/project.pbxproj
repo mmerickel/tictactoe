@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAF304841399892B008765FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF304831399892B008765FA /* UIKit.framework */; };
+		AAF304861399892B008765FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF304851399892B008765FA /* Foundation.framework */; };
+		AAF304881399892B008765FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF304871399892B008765FA /* CoreGraphics.framework */; };
+		AAF3048E1399892B008765FA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAF3048C1399892B008765FA /* InfoPlist.strings */; };
+		AAF304911399892B008765FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF304901399892B008765FA /* main.m */; };
+		AAF304941399892B008765FA /* TicTacToeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF304931399892B008765FA /* TicTacToeAppDelegate.m */; };
+		AAF304971399892B008765FA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF304951399892B008765FA /* MainWindow.xib */; };
+		AAF3049A1399892B008765FA /* TicTacToeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF304991399892B008765FA /* TicTacToeViewController.m */; };
+		AAF3049D1399892B008765FA /* TicTacToeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF3049B1399892B008765FA /* TicTacToeViewController.xib */; };
+		AAF30557139EA14B008765FA /* (0,0)(0,2).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3053E139EA14B008765FA /* (0,0)(0,2).png */; };
+		AAF30558139EA14B008765FA /* (0,0)(0,2)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3053F139EA14B008765FA /* (0,0)(0,2)@2x.png */; };
+		AAF30559139EA14B008765FA /* (0,0)(2,0).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30540139EA14B008765FA /* (0,0)(2,0).png */; };
+		AAF3055A139EA14B008765FA /* (0,0)(2,0)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30541139EA14B008765FA /* (0,0)(2,0)@2x.png */; };
+		AAF3055B139EA14B008765FA /* (0,0)(2,2).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30542139EA14B008765FA /* (0,0)(2,2).png */; };
+		AAF3055C139EA14B008765FA /* (0,0)(2,2)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30543139EA14B008765FA /* (0,0)(2,2)@2x.png */; };
+		AAF3055D139EA14B008765FA /* (0,1)(2,1).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30544139EA14B008765FA /* (0,1)(2,1).png */; };
+		AAF3055E139EA14B008765FA /* (0,1)(2,1)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30545139EA14B008765FA /* (0,1)(2,1)@2x.png */; };
+		AAF3055F139EA14B008765FA /* (0,2)(2,0).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30546139EA14B008765FA /* (0,2)(2,0).png */; };
+		AAF30560139EA14B008765FA /* (0,2)(2,0)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30547139EA14B008765FA /* (0,2)(2,0)@2x.png */; };
+		AAF30561139EA14B008765FA /* (0,2)(2,2).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30548139EA14B008765FA /* (0,2)(2,2).png */; };
+		AAF30562139EA14B008765FA /* (0,2)(2,2)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30549139EA14B008765FA /* (0,2)(2,2)@2x.png */; };
+		AAF30563139EA14B008765FA /* (1,0)(1,2).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3054A139EA14B008765FA /* (1,0)(1,2).png */; };
+		AAF30564139EA14B008765FA /* (1,0)(1,2)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3054B139EA14B008765FA /* (1,0)(1,2)@2x.png */; };
+		AAF30565139EA14B008765FA /* (2,0)(2,2).png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3054C139EA14B008765FA /* (2,0)(2,2).png */; };
+		AAF30566139EA14B008765FA /* (2,0)(2,2)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3054D139EA14B008765FA /* (2,0)(2,2)@2x.png */; };
+		AAF30567139EA14B008765FA /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3054E139EA14B008765FA /* board.png */; };
+		AAF30568139EA14B008765FA /* board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3054F139EA14B008765FA /* board@2x.png */; };
+		AAF30569139EA14B008765FA /* boardMainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30550139EA14B008765FA /* boardMainMenu.png */; };
+		AAF3056A139EA14B008765FA /* boardMainMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30551139EA14B008765FA /* boardMainMenu@2x.png */; };
+		AAF3056B139EA14B008765FA /* o.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30552139EA14B008765FA /* o.png */; };
+		AAF3056C139EA14B008765FA /* o@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30553139EA14B008765FA /* o@2x.png */; };
+		AAF3056D139EA14B008765FA /* tictactoe.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30554139EA14B008765FA /* tictactoe.png */; };
+		AAF3056E139EA14B008765FA /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30555139EA14B008765FA /* x.png */; };
+		AAF3056F139EA14B008765FA /* x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF30556139EA14B008765FA /* x@2x.png */; };
+		AAF3057413A28F2E008765FA /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3057313A28F2E008765FA /* Model.m */; };
+		AAF3057613A2A80D008765FA /* x_reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3057513A2A80C008765FA /* x_reverse.png */; };
+		AAF3057813A2A819008765FA /* o_reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = AAF3057713A2A818008765FA /* o_reverse.png */; };
+		AAF3058C13A2B345008765FA /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3057C13A2B344008765FA /* ASIDataCompressor.m */; };
+		AAF3058D13A2B345008765FA /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3057E13A2B344008765FA /* ASIDataDecompressor.m */; };
+		AAF3058E13A2B345008765FA /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3058013A2B344008765FA /* ASIDownloadCache.m */; };
+		AAF3058F13A2B345008765FA /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3058213A2B344008765FA /* ASIFormDataRequest.m */; };
+		AAF3059013A2B345008765FA /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3058413A2B344008765FA /* ASIHTTPRequest.m */; };
+		AAF3059113A2B345008765FA /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3058813A2B344008765FA /* ASIInputStream.m */; };
+		AAF3059213A2B345008765FA /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3058A13A2B344008765FA /* ASINetworkQueue.m */; };
+		AAF3059413A2B5C5008765FA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF3059313A2B5C5008765FA /* CFNetwork.framework */; };
+		AAF3059613A2B5D9008765FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF3059513A2B5D9008765FA /* SystemConfiguration.framework */; };
+		AAF3059813A2B5F2008765FA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF3059713A2B5F2008765FA /* MobileCoreServices.framework */; };
+		AAF3059A13A2B60C008765FA /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF3059913A2B60C008765FA /* libz.1.2.3.dylib */; };
+		AAF3059D13A2B686008765FA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3059C13A2B686008765FA /* Reachability.m */; };
+		AAF305A013A2B6AF008765FA /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF3059F13A2B6AF008765FA /* ASIAuthenticationDialog.m */; };
+		AAF305BD13A2C274008765FA /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305A313A2C260008765FA /* NSObject+JSON.m */; };
+		AAF305BE13A2C274008765FA /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305A613A2C262008765FA /* SBJsonParser.m */; };
+		AAF305BF13A2C274008765FA /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305A813A2C263008765FA /* SBJsonStreamParser.m */; };
+		AAF305C013A2C274008765FA /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305AA13A2C264008765FA /* SBJsonStreamParserAccumulator.m */; };
+		AAF305C113A2C274008765FA /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305AC13A2C266008765FA /* SBJsonStreamParserAdapter.m */; };
+		AAF305C213A2C274008765FA /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305AE13A2C268008765FA /* SBJsonStreamParserState.m */; };
+		AAF305C313A2C274008765FA /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305B013A2C26A008765FA /* SBJsonStreamWriter.m */; };
+		AAF305C413A2C274008765FA /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305B213A2C26B008765FA /* SBJsonStreamWriterAccumulator.m */; };
+		AAF305C513A2C274008765FA /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305B413A2C26C008765FA /* SBJsonStreamWriterState.m */; };
+		AAF305C613A2C274008765FA /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305B613A2C26D008765FA /* SBJsonTokeniser.m */; };
+		AAF305C713A2C274008765FA /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305B813A2C26F008765FA /* SBJsonWriter.m */; };
+		AAF305C813A2C274008765FA /* SBStateStack.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305BA13A2C272008765FA /* SBStateStack.m */; };
+		AAF305C913A2C274008765FA /* SBUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF305BC13A2C274008765FA /* SBUTF8Stream.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AAF3047F1399892B008765FA /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAF304831399892B008765FA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AAF304851399892B008765FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAF304871399892B008765FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AAF3048B1399892B008765FA /* TicTacToe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicTacToe-Info.plist"; sourceTree = "<group>"; };
+		AAF3048D1399892B008765FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAF3048F1399892B008765FA /* TicTacToe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicTacToe-Prefix.pch"; sourceTree = "<group>"; };
+		AAF304901399892B008765FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AAF304921399892B008765FA /* TicTacToeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicTacToeAppDelegate.h; sourceTree = "<group>"; };
+		AAF304931399892B008765FA /* TicTacToeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacToeAppDelegate.m; sourceTree = "<group>"; };
+		AAF304961399892B008765FA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		AAF304981399892B008765FA /* TicTacToeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicTacToeViewController.h; sourceTree = "<group>"; };
+		AAF304991399892B008765FA /* TicTacToeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacToeViewController.m; sourceTree = "<group>"; };
+		AAF3049C1399892B008765FA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TicTacToeViewController.xib; sourceTree = "<group>"; };
+		AAF3053E139EA14B008765FA /* (0,0)(0,2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,0)(0,2).png"; sourceTree = "<group>"; };
+		AAF3053F139EA14B008765FA /* (0,0)(0,2)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,0)(0,2)@2x.png"; sourceTree = "<group>"; };
+		AAF30540139EA14B008765FA /* (0,0)(2,0).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,0)(2,0).png"; sourceTree = "<group>"; };
+		AAF30541139EA14B008765FA /* (0,0)(2,0)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,0)(2,0)@2x.png"; sourceTree = "<group>"; };
+		AAF30542139EA14B008765FA /* (0,0)(2,2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,0)(2,2).png"; sourceTree = "<group>"; };
+		AAF30543139EA14B008765FA /* (0,0)(2,2)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,0)(2,2)@2x.png"; sourceTree = "<group>"; };
+		AAF30544139EA14B008765FA /* (0,1)(2,1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,1)(2,1).png"; sourceTree = "<group>"; };
+		AAF30545139EA14B008765FA /* (0,1)(2,1)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,1)(2,1)@2x.png"; sourceTree = "<group>"; };
+		AAF30546139EA14B008765FA /* (0,2)(2,0).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,2)(2,0).png"; sourceTree = "<group>"; };
+		AAF30547139EA14B008765FA /* (0,2)(2,0)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,2)(2,0)@2x.png"; sourceTree = "<group>"; };
+		AAF30548139EA14B008765FA /* (0,2)(2,2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,2)(2,2).png"; sourceTree = "<group>"; };
+		AAF30549139EA14B008765FA /* (0,2)(2,2)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(0,2)(2,2)@2x.png"; sourceTree = "<group>"; };
+		AAF3054A139EA14B008765FA /* (1,0)(1,2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(1,0)(1,2).png"; sourceTree = "<group>"; };
+		AAF3054B139EA14B008765FA /* (1,0)(1,2)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(1,0)(1,2)@2x.png"; sourceTree = "<group>"; };
+		AAF3054C139EA14B008765FA /* (2,0)(2,2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(2,0)(2,2).png"; sourceTree = "<group>"; };
+		AAF3054D139EA14B008765FA /* (2,0)(2,2)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "(2,0)(2,2)@2x.png"; sourceTree = "<group>"; };
+		AAF3054E139EA14B008765FA /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
+		AAF3054F139EA14B008765FA /* board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "board@2x.png"; sourceTree = "<group>"; };
+		AAF30550139EA14B008765FA /* boardMainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boardMainMenu.png; sourceTree = "<group>"; };
+		AAF30551139EA14B008765FA /* boardMainMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boardMainMenu@2x.png"; sourceTree = "<group>"; };
+		AAF30552139EA14B008765FA /* o.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = o.png; sourceTree = "<group>"; };
+		AAF30553139EA14B008765FA /* o@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "o@2x.png"; sourceTree = "<group>"; };
+		AAF30554139EA14B008765FA /* tictactoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tictactoe.png; sourceTree = "<group>"; };
+		AAF30555139EA14B008765FA /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		AAF30556139EA14B008765FA /* x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x@2x.png"; sourceTree = "<group>"; };
+		AAF3057213A28F2D008765FA /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		AAF3057313A28F2E008765FA /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		AAF3057513A2A80C008765FA /* x_reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_reverse.png; sourceTree = "<group>"; };
+		AAF3057713A2A818008765FA /* o_reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = o_reverse.png; sourceTree = "<group>"; };
+		AAF3057A13A2B344008765FA /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		AAF3057B13A2B344008765FA /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		AAF3057C13A2B344008765FA /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		AAF3057D13A2B344008765FA /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		AAF3057E13A2B344008765FA /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		AAF3057F13A2B344008765FA /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		AAF3058013A2B344008765FA /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		AAF3058113A2B344008765FA /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		AAF3058213A2B344008765FA /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		AAF3058313A2B344008765FA /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		AAF3058413A2B344008765FA /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		AAF3058513A2B344008765FA /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		AAF3058613A2B344008765FA /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		AAF3058713A2B344008765FA /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		AAF3058813A2B344008765FA /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		AAF3058913A2B344008765FA /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		AAF3058A13A2B344008765FA /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		AAF3058B13A2B344008765FA /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		AAF3059313A2B5C5008765FA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		AAF3059513A2B5D9008765FA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AAF3059713A2B5F2008765FA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AAF3059913A2B60C008765FA /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		AAF3059B13A2B686008765FA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		AAF3059C13A2B686008765FA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		AAF3059E13A2B6AF008765FA /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		AAF3059F13A2B6AF008765FA /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		AAF305A113A2C25F008765FA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON/JSON.h; sourceTree = "<group>"; };
+		AAF305A213A2C260008765FA /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+JSON.h"; path = "JSON/NSObject+JSON.h"; sourceTree = "<group>"; };
+		AAF305A313A2C260008765FA /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+JSON.m"; path = "JSON/NSObject+JSON.m"; sourceTree = "<group>"; };
+		AAF305A413A2C261008765FA /* SBJsonIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonIncludes.h; path = JSON/SBJsonIncludes.h; sourceTree = "<group>"; };
+		AAF305A513A2C261008765FA /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonParser.h; path = JSON/SBJsonParser.h; sourceTree = "<group>"; };
+		AAF305A613A2C262008765FA /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = JSON/SBJsonParser.m; sourceTree = "<group>"; };
+		AAF305A713A2C262008765FA /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParser.h; path = JSON/SBJsonStreamParser.h; sourceTree = "<group>"; };
+		AAF305A813A2C263008765FA /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParser.m; path = JSON/SBJsonStreamParser.m; sourceTree = "<group>"; };
+		AAF305A913A2C264008765FA /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserAccumulator.h; path = JSON/SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		AAF305AA13A2C264008765FA /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserAccumulator.m; path = JSON/SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		AAF305AB13A2C265008765FA /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserAdapter.h; path = JSON/SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		AAF305AC13A2C266008765FA /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserAdapter.m; path = JSON/SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		AAF305AD13A2C266008765FA /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserState.h; path = JSON/SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		AAF305AE13A2C268008765FA /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserState.m; path = JSON/SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		AAF305AF13A2C269008765FA /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriter.h; path = JSON/SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		AAF305B013A2C26A008765FA /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriter.m; path = JSON/SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		AAF305B113A2C26A008765FA /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriterAccumulator.h; path = JSON/SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		AAF305B213A2C26B008765FA /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriterAccumulator.m; path = JSON/SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		AAF305B313A2C26C008765FA /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriterState.h; path = JSON/SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		AAF305B413A2C26C008765FA /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriterState.m; path = JSON/SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		AAF305B513A2C26D008765FA /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonTokeniser.h; path = JSON/SBJsonTokeniser.h; sourceTree = "<group>"; };
+		AAF305B613A2C26D008765FA /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonTokeniser.m; path = JSON/SBJsonTokeniser.m; sourceTree = "<group>"; };
+		AAF305B713A2C26E008765FA /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = JSON/SBJsonWriter.h; sourceTree = "<group>"; };
+		AAF305B813A2C26F008765FA /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON/SBJsonWriter.m; sourceTree = "<group>"; };
+		AAF305B913A2C26F008765FA /* SBStateStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBStateStack.h; path = JSON/SBStateStack.h; sourceTree = "<group>"; };
+		AAF305BA13A2C272008765FA /* SBStateStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBStateStack.m; path = JSON/SBStateStack.m; sourceTree = "<group>"; };
+		AAF305BB13A2C273008765FA /* SBUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBUTF8Stream.h; path = JSON/SBUTF8Stream.h; sourceTree = "<group>"; };
+		AAF305BC13A2C274008765FA /* SBUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBUTF8Stream.m; path = JSON/SBUTF8Stream.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAF3047C1399892A008765FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAF3059A13A2B60C008765FA /* libz.1.2.3.dylib in Frameworks */,
+				AAF3059813A2B5F2008765FA /* MobileCoreServices.framework in Frameworks */,
+				AAF3059613A2B5D9008765FA /* SystemConfiguration.framework in Frameworks */,
+				AAF3059413A2B5C5008765FA /* CFNetwork.framework in Frameworks */,
+				AAF304841399892B008765FA /* UIKit.framework in Frameworks */,
+				AAF304861399892B008765FA /* Foundation.framework in Frameworks */,
+				AAF304881399892B008765FA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAF304741399892A008765FA = {
+			isa = PBXGroup;
+			children = (
+				AAF3059913A2B60C008765FA /* libz.1.2.3.dylib */,
+				AAF3059713A2B5F2008765FA /* MobileCoreServices.framework */,
+				AAF3059513A2B5D9008765FA /* SystemConfiguration.framework */,
+				AAF3059313A2B5C5008765FA /* CFNetwork.framework */,
+				AAF304891399892B008765FA /* TicTacToe */,
+				AAF304821399892B008765FA /* Frameworks */,
+				AAF304801399892B008765FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAF304801399892B008765FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAF3047F1399892B008765FA /* TicTacToe.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAF304821399892B008765FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAF304831399892B008765FA /* UIKit.framework */,
+				AAF304851399892B008765FA /* Foundation.framework */,
+				AAF304871399892B008765FA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAF304891399892B008765FA /* TicTacToe */ = {
+			isa = PBXGroup;
+			children = (
+				AAF305CA13A2C281008765FA /* JSON */,
+				AAF3057913A2B344008765FA /* ASI */,
+				AAF3053D139EA14B008765FA /* Resources */,
+				AAF304921399892B008765FA /* TicTacToeAppDelegate.h */,
+				AAF304931399892B008765FA /* TicTacToeAppDelegate.m */,
+				AAF304951399892B008765FA /* MainWindow.xib */,
+				AAF304981399892B008765FA /* TicTacToeViewController.h */,
+				AAF304991399892B008765FA /* TicTacToeViewController.m */,
+				AAF3049B1399892B008765FA /* TicTacToeViewController.xib */,
+				AAF3048A1399892B008765FA /* Supporting Files */,
+				AAF3057213A28F2D008765FA /* Model.h */,
+				AAF3057313A28F2E008765FA /* Model.m */,
+			);
+			path = TicTacToe;
+			sourceTree = "<group>";
+		};
+		AAF3048A1399892B008765FA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAF3048B1399892B008765FA /* TicTacToe-Info.plist */,
+				AAF3048C1399892B008765FA /* InfoPlist.strings */,
+				AAF3048F1399892B008765FA /* TicTacToe-Prefix.pch */,
+				AAF304901399892B008765FA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAF3053D139EA14B008765FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAF3057713A2A818008765FA /* o_reverse.png */,
+				AAF3057513A2A80C008765FA /* x_reverse.png */,
+				AAF3053E139EA14B008765FA /* (0,0)(0,2).png */,
+				AAF3053F139EA14B008765FA /* (0,0)(0,2)@2x.png */,
+				AAF30540139EA14B008765FA /* (0,0)(2,0).png */,
+				AAF30541139EA14B008765FA /* (0,0)(2,0)@2x.png */,
+				AAF30542139EA14B008765FA /* (0,0)(2,2).png */,
+				AAF30543139EA14B008765FA /* (0,0)(2,2)@2x.png */,
+				AAF30544139EA14B008765FA /* (0,1)(2,1).png */,
+				AAF30545139EA14B008765FA /* (0,1)(2,1)@2x.png */,
+				AAF30546139EA14B008765FA /* (0,2)(2,0).png */,
+				AAF30547139EA14B008765FA /* (0,2)(2,0)@2x.png */,
+				AAF30548139EA14B008765FA /* (0,2)(2,2).png */,
+				AAF30549139EA14B008765FA /* (0,2)(2,2)@2x.png */,
+				AAF3054A139EA14B008765FA /* (1,0)(1,2).png */,
+				AAF3054B139EA14B008765FA /* (1,0)(1,2)@2x.png */,
+				AAF3054C139EA14B008765FA /* (2,0)(2,2).png */,
+				AAF3054D139EA14B008765FA /* (2,0)(2,2)@2x.png */,
+				AAF3054E139EA14B008765FA /* board.png */,
+				AAF3054F139EA14B008765FA /* board@2x.png */,
+				AAF30550139EA14B008765FA /* boardMainMenu.png */,
+				AAF30551139EA14B008765FA /* boardMainMenu@2x.png */,
+				AAF30552139EA14B008765FA /* o.png */,
+				AAF30553139EA14B008765FA /* o@2x.png */,
+				AAF30554139EA14B008765FA /* tictactoe.png */,
+				AAF30555139EA14B008765FA /* x.png */,
+				AAF30556139EA14B008765FA /* x@2x.png */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		AAF3057913A2B344008765FA /* ASI */ = {
+			isa = PBXGroup;
+			children = (
+				AAF3059E13A2B6AF008765FA /* ASIAuthenticationDialog.h */,
+				AAF3059F13A2B6AF008765FA /* ASIAuthenticationDialog.m */,
+				AAF3059B13A2B686008765FA /* Reachability.h */,
+				AAF3059C13A2B686008765FA /* Reachability.m */,
+				AAF3057A13A2B344008765FA /* ASICacheDelegate.h */,
+				AAF3057B13A2B344008765FA /* ASIDataCompressor.h */,
+				AAF3057C13A2B344008765FA /* ASIDataCompressor.m */,
+				AAF3057D13A2B344008765FA /* ASIDataDecompressor.h */,
+				AAF3057E13A2B344008765FA /* ASIDataDecompressor.m */,
+				AAF3057F13A2B344008765FA /* ASIDownloadCache.h */,
+				AAF3058013A2B344008765FA /* ASIDownloadCache.m */,
+				AAF3058113A2B344008765FA /* ASIFormDataRequest.h */,
+				AAF3058213A2B344008765FA /* ASIFormDataRequest.m */,
+				AAF3058313A2B344008765FA /* ASIHTTPRequest.h */,
+				AAF3058413A2B344008765FA /* ASIHTTPRequest.m */,
+				AAF3058513A2B344008765FA /* ASIHTTPRequestConfig.h */,
+				AAF3058613A2B344008765FA /* ASIHTTPRequestDelegate.h */,
+				AAF3058713A2B344008765FA /* ASIInputStream.h */,
+				AAF3058813A2B344008765FA /* ASIInputStream.m */,
+				AAF3058913A2B344008765FA /* ASINetworkQueue.h */,
+				AAF3058A13A2B344008765FA /* ASINetworkQueue.m */,
+				AAF3058B13A2B344008765FA /* ASIProgressDelegate.h */,
+			);
+			path = ASI;
+			sourceTree = "<group>";
+		};
+		AAF305CA13A2C281008765FA /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				AAF305A113A2C25F008765FA /* JSON.h */,
+				AAF305A213A2C260008765FA /* NSObject+JSON.h */,
+				AAF305A313A2C260008765FA /* NSObject+JSON.m */,
+				AAF305A413A2C261008765FA /* SBJsonIncludes.h */,
+				AAF305A513A2C261008765FA /* SBJsonParser.h */,
+				AAF305A613A2C262008765FA /* SBJsonParser.m */,
+				AAF305A713A2C262008765FA /* SBJsonStreamParser.h */,
+				AAF305A813A2C263008765FA /* SBJsonStreamParser.m */,
+				AAF305A913A2C264008765FA /* SBJsonStreamParserAccumulator.h */,
+				AAF305AA13A2C264008765FA /* SBJsonStreamParserAccumulator.m */,
+				AAF305AB13A2C265008765FA /* SBJsonStreamParserAdapter.h */,
+				AAF305AC13A2C266008765FA /* SBJsonStreamParserAdapter.m */,
+				AAF305AD13A2C266008765FA /* SBJsonStreamParserState.h */,
+				AAF305AE13A2C268008765FA /* SBJsonStreamParserState.m */,
+				AAF305AF13A2C269008765FA /* SBJsonStreamWriter.h */,
+				AAF305B013A2C26A008765FA /* SBJsonStreamWriter.m */,
+				AAF305B113A2C26A008765FA /* SBJsonStreamWriterAccumulator.h */,
+				AAF305B213A2C26B008765FA /* SBJsonStreamWriterAccumulator.m */,
+				AAF305B313A2C26C008765FA /* SBJsonStreamWriterState.h */,
+				AAF305B413A2C26C008765FA /* SBJsonStreamWriterState.m */,
+				AAF305B513A2C26D008765FA /* SBJsonTokeniser.h */,
+				AAF305B613A2C26D008765FA /* SBJsonTokeniser.m */,
+				AAF305B713A2C26E008765FA /* SBJsonWriter.h */,
+				AAF305B813A2C26F008765FA /* SBJsonWriter.m */,
+				AAF305B913A2C26F008765FA /* SBStateStack.h */,
+				AAF305BA13A2C272008765FA /* SBStateStack.m */,
+				AAF305BB13A2C273008765FA /* SBUTF8Stream.h */,
+				AAF305BC13A2C274008765FA /* SBUTF8Stream.m */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAF3047E1399892A008765FA /* TicTacToe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAF304A01399892B008765FA /* Build configuration list for PBXNativeTarget "TicTacToe" */;
+			buildPhases = (
+				AAF3047B1399892A008765FA /* Sources */,
+				AAF3047C1399892A008765FA /* Frameworks */,
+				AAF3047D1399892A008765FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TicTacToe;
+			productName = TicTacToe;
+			productReference = AAF3047F1399892B008765FA /* TicTacToe.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAF304761399892A008765FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Componica, LLC";
+			};
+			buildConfigurationList = AAF304791399892A008765FA /* Build configuration list for PBXProject "TicTacToe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AAF304741399892A008765FA;
+			productRefGroup = AAF304801399892B008765FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAF3047E1399892A008765FA /* TicTacToe */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAF3047D1399892A008765FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAF3048E1399892B008765FA /* InfoPlist.strings in Resources */,
+				AAF304971399892B008765FA /* MainWindow.xib in Resources */,
+				AAF3049D1399892B008765FA /* TicTacToeViewController.xib in Resources */,
+				AAF30557139EA14B008765FA /* (0,0)(0,2).png in Resources */,
+				AAF30558139EA14B008765FA /* (0,0)(0,2)@2x.png in Resources */,
+				AAF30559139EA14B008765FA /* (0,0)(2,0).png in Resources */,
+				AAF3055A139EA14B008765FA /* (0,0)(2,0)@2x.png in Resources */,
+				AAF3055B139EA14B008765FA /* (0,0)(2,2).png in Resources */,
+				AAF3055C139EA14B008765FA /* (0,0)(2,2)@2x.png in Resources */,
+				AAF3055D139EA14B008765FA /* (0,1)(2,1).png in Resources */,
+				AAF3055E139EA14B008765FA /* (0,1)(2,1)@2x.png in Resources */,
+				AAF3055F139EA14B008765FA /* (0,2)(2,0).png in Resources */,
+				AAF30560139EA14B008765FA /* (0,2)(2,0)@2x.png in Resources */,
+				AAF30561139EA14B008765FA /* (0,2)(2,2).png in Resources */,
+				AAF30562139EA14B008765FA /* (0,2)(2,2)@2x.png in Resources */,
+				AAF30563139EA14B008765FA /* (1,0)(1,2).png in Resources */,
+				AAF30564139EA14B008765FA /* (1,0)(1,2)@2x.png in Resources */,
+				AAF30565139EA14B008765FA /* (2,0)(2,2).png in Resources */,
+				AAF30566139EA14B008765FA /* (2,0)(2,2)@2x.png in Resources */,
+				AAF30567139EA14B008765FA /* board.png in Resources */,
+				AAF30568139EA14B008765FA /* board@2x.png in Resources */,
+				AAF30569139EA14B008765FA /* boardMainMenu.png in Resources */,
+				AAF3056A139EA14B008765FA /* boardMainMenu@2x.png in Resources */,
+				AAF3056B139EA14B008765FA /* o.png in Resources */,
+				AAF3056C139EA14B008765FA /* o@2x.png in Resources */,
+				AAF3056D139EA14B008765FA /* tictactoe.png in Resources */,
+				AAF3056E139EA14B008765FA /* x.png in Resources */,
+				AAF3056F139EA14B008765FA /* x@2x.png in Resources */,
+				AAF3057613A2A80D008765FA /* x_reverse.png in Resources */,
+				AAF3057813A2A819008765FA /* o_reverse.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAF3047B1399892A008765FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAF304911399892B008765FA /* main.m in Sources */,
+				AAF304941399892B008765FA /* TicTacToeAppDelegate.m in Sources */,
+				AAF3049A1399892B008765FA /* TicTacToeViewController.m in Sources */,
+				AAF3057413A28F2E008765FA /* Model.m in Sources */,
+				AAF3058C13A2B345008765FA /* ASIDataCompressor.m in Sources */,
+				AAF3058D13A2B345008765FA /* ASIDataDecompressor.m in Sources */,
+				AAF3058E13A2B345008765FA /* ASIDownloadCache.m in Sources */,
+				AAF3058F13A2B345008765FA /* ASIFormDataRequest.m in Sources */,
+				AAF3059013A2B345008765FA /* ASIHTTPRequest.m in Sources */,
+				AAF3059113A2B345008765FA /* ASIInputStream.m in Sources */,
+				AAF3059213A2B345008765FA /* ASINetworkQueue.m in Sources */,
+				AAF3059D13A2B686008765FA /* Reachability.m in Sources */,
+				AAF305A013A2B6AF008765FA /* ASIAuthenticationDialog.m in Sources */,
+				AAF305BD13A2C274008765FA /* NSObject+JSON.m in Sources */,
+				AAF305BE13A2C274008765FA /* SBJsonParser.m in Sources */,
+				AAF305BF13A2C274008765FA /* SBJsonStreamParser.m in Sources */,
+				AAF305C013A2C274008765FA /* SBJsonStreamParserAccumulator.m in Sources */,
+				AAF305C113A2C274008765FA /* SBJsonStreamParserAdapter.m in Sources */,
+				AAF305C213A2C274008765FA /* SBJsonStreamParserState.m in Sources */,
+				AAF305C313A2C274008765FA /* SBJsonStreamWriter.m in Sources */,
+				AAF305C413A2C274008765FA /* SBJsonStreamWriterAccumulator.m in Sources */,
+				AAF305C513A2C274008765FA /* SBJsonStreamWriterState.m in Sources */,
+				AAF305C613A2C274008765FA /* SBJsonTokeniser.m in Sources */,
+				AAF305C713A2C274008765FA /* SBJsonWriter.m in Sources */,
+				AAF305C813A2C274008765FA /* SBStateStack.m in Sources */,
+				AAF305C913A2C274008765FA /* SBUTF8Stream.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AAF3048C1399892B008765FA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAF3048D1399892B008765FA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AAF304951399892B008765FA /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAF304961399892B008765FA /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		AAF3049B1399892B008765FA /* TicTacToeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAF3049C1399892B008765FA /* en */,
+			);
+			name = TicTacToeViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAF3049E1399892B008765FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AAF3049F1399892B008765FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		AAF304A11399892B008765FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";
+				INFOPLIST_FILE = "TicTacToe/TicTacToe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AAF304A21399892B008765FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicTacToe/TicTacToe-Prefix.pch";
+				INFOPLIST_FILE = "TicTacToe/TicTacToe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAF304791399892A008765FA /* Build configuration list for PBXProject "TicTacToe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAF3049E1399892B008765FA /* Debug */,
+				AAF3049F1399892B008765FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAF304A01399892B008765FA /* Build configuration list for PBXNativeTarget "TicTacToe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAF304A11399892B008765FA /* Debug */,
+				AAF304A21399892B008765FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAF304761399892A008765FA /* Project object */;
+}
