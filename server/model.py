@@ -9,6 +9,7 @@ from gevent.queue import Queue
 from pyramid.compat import json
 
 clients = {}
+client_names = set()
 pending_games = deque()
 games = {}
 
@@ -36,6 +37,8 @@ class Observer(Queue):
         return Queue.get(self, *args, **kw)
 
 class Game(object):
+    Observer = Observer # testing hook
+
     def __init__(self, id):
         self.id = id
         self.players = []
@@ -79,7 +82,7 @@ class Game(object):
         self.notify_observers(kw)
 
     def add_observer(self, cursor=None):
-        obs = Observer(game=self)
+        obs = self.Observer(game=self)
         if cursor == self.cursor or cursor is None:
             self.observers.append(obs)
         else:
@@ -127,6 +130,7 @@ class TicTacToe(Game):
         return self.winner is not None
 
     def check_move(self, client, position):
+        if self.is_complete(): return False
         if self.turn == 'X' and client != self.playerX: return False
         if self.turn == 'O' and client != self.playerO: return False
         if self.board[position] != '_': return False

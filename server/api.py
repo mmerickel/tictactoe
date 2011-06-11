@@ -5,12 +5,14 @@ from pyramid.response import Response
 from pyramid.view import view_config
 
 from model import Client, TicTacToe
-from model import clients, pending_games, games
+from model import clients, client_names
+from model import pending_games, games
 
 log = logging.getLogger(__name__)
 
 RESUME_ERROR = {'error': {'code': 110, 'message': 'cannot resume game'}}
 INVALID_CLIENT_ID = {'error': {'code': 101, 'message': 'invalid client id'}}
+INVALID_CLIENT_NAME = {'error': {'code': 104, 'message': 'invalid client name'}}
 INVALID_GAME_ID = {'error': {'code': 102, 'message': 'invalid game id'}}
 INVALID_MOVE = {'error': {'code': 103, 'message': 'invalid move'}}
 
@@ -51,6 +53,10 @@ def play_view(request):
         client_id = client_id or create_client_id()
         client = Client(client_id, name)
 
+    # avoid multiple clients with the same name
+    if name in client_names:
+        return INVALID_CLIENT_NAME
+
     # add the client to a game and possibly begin
     if len(pending_games) > 0:
         game = pending_games.popleft()
@@ -70,6 +76,7 @@ def play_view(request):
     # remember the client
     client.game_id = game.id
     clients[client.id] = client
+    client_names.add(client.name)
 
     return {
         'client_id': client.id,
@@ -87,6 +94,7 @@ def quit_view(request):
     game = games[client.game_id]
     game.remove_player(client)
 
+    client_names.remove(client.name)
     del clients[client_id]
     return {}
 
