@@ -93,6 +93,7 @@ def quit_view(request):
 
     game = games[client.game_id]
     game.remove_player(client)
+    game.end('%s quit the game' % client.name)
 
     client_names.remove(client.name)
     del clients[client_id]
