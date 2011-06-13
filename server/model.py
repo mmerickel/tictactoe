@@ -8,6 +8,7 @@ from gevent.queue import Queue
 
 from pyramid.compat import json
 
+unique_client_num = 0
 clients = {}
 client_names = set()
 pending_games = deque()

@@ -5,7 +5,7 @@ from pyramid.response import Response
 from pyramid.view import view_config
 
 from model import Client, TicTacToe
-from model import clients, client_names
+from model import clients, client_names, unique_client_num
 from model import pending_games, games
 
 log = logging.getLogger(__name__)
@@ -23,12 +23,12 @@ def create_game_id():
     return uuid.uuid4().hex[:8]
 
 def create_name():
-    return 'Guest%04d' % (1000 + len(clients))
+    return 'Guest%04d' % (1000 + unique_client_num)
 
 @view_config(route_name='api.play', request_method='POST', renderer='json')
 def play_view(request):
     client_id = request.POST.get('client_id')
-    name = request.POST.get('name') or create_name()
+    name = request.POST.get('name')
     resume = request.POST.get('resume', False)
 
     client = clients.get(client_id)
@@ -48,9 +48,16 @@ def play_view(request):
     if client:
         # log the client out, killing their current games
         quit_view(request)
+        if name:
+            client.name = name
     else:
         client_id = client_id or create_client_id()
+        name = name or create_name()
         client = Client(client_id, name)
+
+        # new client, increase unique count
+        global unique_client_num
+        unique_client_num += 1
 
     # avoid multiple clients with the same name
     if name in client_names:
