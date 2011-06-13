@@ -1,4 +1,5 @@
 import logging
+import traceback
 import uuid
 
 from pyramid.response import Response
@@ -147,3 +148,13 @@ def updates_view(request):
     #r.content_encoding = 'chunked'
     r.app_iter = game.add_observer(cursor)
     return r
+
+@view_config(context=KeyError, renderer='json')
+@view_config(context=ValueError, renderer='json')
+def lookup_error_view(exc, request):
+    return {
+        'error': {
+            'code': 100,
+            'message': 'general error',
+        }
+    }
