@@ -24,6 +24,8 @@
 {
     int xThird = 0;
     int yThird = 0;
+    BOOL selectable = NO;
+    
     NSUInteger numTaps = [[touches anyObject] tapCount];
     
     CGPoint pt = [[touches anyObject] locationInView:self.view];
@@ -33,23 +35,31 @@
     {
         xThird = (pt.x/oneThirdOfBoard) + 1;
         yThird = ((pt.y-maxYPosOfBoard)/oneThirdOfBoard) + 1;
-    }
     
-    if (numTaps < 2)
-    {   
-        if( [self isSelectableX:xThird Y:yThird] )
+        selectable = [self isSelectableX:xThird Y:yThird];
+    
+        if( selectable )
         {
-            // move the selection cursor to this place
-            
-            int deltaX = (((xThird-1)%3) * oneThirdOfBoard) + markSpacer;
-            int deltaY = maxYPosOfBoard + ((((yThird-1)%3)) * oneThirdOfBoard) + markSpacer;
-            selectedView.frame = CGRectMake(deltaX, deltaY, 
-                                            selectedView.frame.size.width, 
-                                            selectedView.frame.size.height); 
-            //[self.view bringSubviewToFront: selectedView];
-            //self.view.frame = selectedView.frame;
+            if (numTaps < 2)
+            {   
+                
+                    // move the selection cursor to this place
+                    
+                    int deltaX = (((xThird-1)%3) * oneThirdOfBoard) + markSpacer;
+                    int deltaY = maxYPosOfBoard + ((((yThird-1)%3)) * oneThirdOfBoard) + markSpacer;
+                    selectedView.frame = CGRectMake(deltaX, deltaY, 
+                                                    selectedView.frame.size.width, 
+                                                    selectedView.frame.size.height); 
+                    //[self.view bringSubviewToFront: selectedView];
+                    //self.view.frame = selectedView.frame;
 
-            [selectedView setHidden: NO];
+                    [selectedView setHidden: NO];
+            }
+            else
+            {
+                int movePos = ( (yThird-1) * 3 ) + (xThird-1);
+                [[Model sharedModel] movePosition:movePos];
+            }
         }
         else
         {
@@ -148,7 +158,7 @@
 
     localMarkString = @"XXXo__Xoo";
     localMarkString = [localMarkString uppercaseString];
-    markString = @"XXXo__Xoo";
+    markString = [Model sharedModel].markString;
     [self markUpBoard];
     [self checkWinner];
 }
@@ -158,44 +168,59 @@
     UIImage * image = nil;
     
     if( [markString characterAtIndex:0] == [markString characterAtIndex:1] &&
-       [markString characterAtIndex:0] == [markString characterAtIndex:2])
+        [markString characterAtIndex:0] == [markString characterAtIndex:2]  &&
+        [markString characterAtIndex:0] != '_')
     {
         image = [UIImage imageNamed:@"(0,0)(2,0).png"];
     }
     if( [markString characterAtIndex:3] == [markString characterAtIndex:4] &&
-       [markString characterAtIndex:3] == [markString characterAtIndex:5])
+       [markString characterAtIndex:3] == [markString characterAtIndex:5]  &&
+       [markString characterAtIndex:0] != '_')
+
     {
         image = [UIImage imageNamed:@"(0,1)(2,1).png"];
     }
     if( [markString characterAtIndex:6] == [markString characterAtIndex:7] &&
-       [markString characterAtIndex:6] == [markString characterAtIndex:8])
+       [markString characterAtIndex:6] == [markString characterAtIndex:8]  &&
+       [markString characterAtIndex:0] != '_')
+
     {
         image = [UIImage imageNamed:@"(0,2)(2,2).png"];
     }
     if( [markString characterAtIndex:0] == [markString characterAtIndex:3] &&
-       [markString characterAtIndex:0] == [markString characterAtIndex:6])
+       [markString characterAtIndex:0] == [markString characterAtIndex:6]  &&
+       [markString characterAtIndex:0] != '_')
+
     {
         image = [UIImage imageNamed:@"(0,0)(0,2).png"];
     }
     if( [markString characterAtIndex:1] == [markString characterAtIndex:4] &&
-       [markString characterAtIndex:1] == [markString characterAtIndex:7])
+       [markString characterAtIndex:1] == [markString characterAtIndex:7]  &&
+       [markString characterAtIndex:0] != '_')
+
     {
         image = [UIImage imageNamed:@"(1,0)(1,2).png"];
     }
     if( [markString characterAtIndex:2] == [markString characterAtIndex:5] &&
-       [markString characterAtIndex:2] == [markString characterAtIndex:8])
+       [markString characterAtIndex:2] == [markString characterAtIndex:8]  &&
+       [markString characterAtIndex:0] != '_')
+
     {
         image = [UIImage imageNamed:@"(2,0)(2,2).png"];
     }
     
     if( [markString characterAtIndex:0] == [markString characterAtIndex:4] &&
-       [markString characterAtIndex:0] == [markString characterAtIndex:8])
+       [markString characterAtIndex:0] == [markString characterAtIndex:8]  &&
+       [markString characterAtIndex:0] != '_')
+
     {
         image = [UIImage imageNamed:@"(0,0)(2,2).png"];
     }
     
     if( [markString characterAtIndex:2] == [markString characterAtIndex:4] &&
-       [markString characterAtIndex:2] == [markString characterAtIndex:6])
+       [markString characterAtIndex:2] == [markString characterAtIndex:6]  &&
+       [markString characterAtIndex:0] != '_')
+
     {
         image = [UIImage imageNamed:@"(0,2)(2,0).png"];
     }

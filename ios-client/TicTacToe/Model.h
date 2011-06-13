@@ -18,6 +18,14 @@ typedef enum
     blank
 } BoardMark;
 
+typedef enum  
+{
+    Pre_Connect,
+    Connecting,
+    Connected_No_Board,
+    Connected
+} GameState;
+
 
 @interface Model : NSObject 
 {
@@ -27,7 +35,10 @@ typedef enum
     NSString * client_id;
     NSString * game_id;
     NSString * myName;
+    NSString * type;
+    NSString * timestamp;
     int cursor;
+    GameState gameState;
 }
 @property (readonly) NSString * markString;
 @property (readonly) BoardMark myMarkType;
@@ -41,8 +52,11 @@ typedef enum
 
 +(Model*)sharedModel;
 - (void) login;
-- (void) getBoardUpdate;
+//- (void) getStatus;
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;
+- (void) getBoardUpdate;
+//- (void) checkState;
+- (BOOL) movePosition:(int)position;
 
 @end

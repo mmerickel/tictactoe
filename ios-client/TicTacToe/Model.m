@@ -56,6 +56,12 @@ static Model* _sharedModel = nil;
 		markString = @"_________";
 		myMarkType = X;
 		isMyTurn = YES;
+        client_id = @"0";
+        game_id = @"0";
+        myName = @"";
+        gameState = Pre_Connect;
+        cursor = 0;
+        
         [self login];
 	}
     
@@ -68,27 +74,104 @@ static Model* _sharedModel = nil;
     
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:@"client_id" forKey:@"920d14a9a2204d8bbc553ef94f6d6773"];
-    [request setPostValue:@"name" forKey:@"Dan"];
+    [request setPostValue:@"1234" forKey:@"client_id"]; //920d15a9a2204d8bbc553ef94f6d6773
+    //[request setPostValue:@"name" forKey:@"Dan"];
+
+    [request setCompletionBlock:^{
+        NSString *responseString = [request responseString];
+        id objectFromKey = nil;
+        NSLog(responseString);
+        
+        // Store incoming data into a string
+        NSString *jsonString = [NSString stringWithString:responseString];
+        
+        // Create a dictionary from the JSON string
+        NSDictionary *results = [jsonString JSONValue];
+        
+        objectFromKey = [results objectForKey:@"server error"];
+        if (objectFromKey == nil)
+        {
+            objectFromKey = [results objectForKey:@"name"];
+            if (objectFromKey != nil)
+            {
+                myName = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+                NSLog(myName);
+            }
+            objectFromKey = [results objectForKey:@"game_id"];
+            if (objectFromKey != nil)
+            {
+                game_id = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+                NSLog(game_id);
+            }
+            objectFromKey = [results objectForKey:@"client_id"];
+            if (objectFromKey != nil)
+            {
+                client_id = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+                NSLog([@"client_id is " stringByAppendingFormat:@"%d", client_id]);
+            }
+        }
+    }];
+    [request setFailedBlock:^{
+        NSError *error = [request error];
+    }];    
+    //[request setDelegate:self];
+    [request startSynchronous];  
     
-    [request setDelegate:self];
-    [request startAsynchronous];    
+    if(game_id != @"0"  &&  game_id != nil)
+    {
+        [self getBoardUpdate];
+    }
+    
 }
 
-- (void) getBoardUpdate
+/*
+- (void) getStatus
 {
     NSString* urlString ;
 
-    urlString = [@"http://aws.merickel.org/tictactoe/api/updates/" stringByAppendingString:game_id];
+    NSLog(game_id);
+    urlString = [NSString stringWithFormat:@"http://aws.merickel.org/tictactoe/api/updates/%@", game_id]; 
 
     NSLog(urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
     [request setDelegate:self];
+    [request startAsynchronous];    
+}
+*/
+
+- (void) getBoardUpdate
+{
+    NSString* urlString ;
+
+    urlString = [NSString stringWithFormat:@"http://aws.merickel.org/tictactoe/api/updates/%@", game_id]; 
+    urlString = [urlString stringByAppendingFormat:@"?cursor=%d", cursor]; 
+    
+    NSLog(urlString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setShouldAttemptPersistentConnection:YES];
+    [request setPersistentConnectionTimeoutSeconds:32];
+
+    [request setDelegate:self];
     [request startAsynchronous];        
+
 }
 
+- (BOOL) movePosition:(int)position
+{
+    NSString * urlString = @"http://aws.merickel.org/tictactoe/api/move";
+    NSString * posStr = [NSString stringWithFormat:@"%d", position];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:@"client_id" forKey:client_id];
+    [request setPostValue:@"position" forKey:posStr];
+    
+    [request setDelegate:self];
+    [request startAsynchronous];    
+}
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
@@ -98,55 +181,85 @@ static Model* _sharedModel = nil;
     NSLog(responseString);
     
     // Store incoming data into a string
-    NSString *jsonString = [[NSString alloc] initWithString:responseString];
+    NSString *jsonString = [NSString stringWithString:responseString];
     
     // Create a dictionary from the JSON string
     NSDictionary *results = [jsonString JSONValue];
     
-    objectFromKey = [results objectForKey:@"name"];
-    if (objectFromKey != nil)
+    objectFromKey = [results objectForKey:@"error"];
+    if (objectFromKey == nil)
     {
-        myName = objectFromKey;
-        NSLog(myName);
+        objectFromKey = [results objectForKey:@"cursor"];
+        if (objectFromKey != nil)
+        {
+            NSString * temp = objectFromKey;
+            cursor = [temp intValue];
+            temp = [@"Cursor is " stringByAppendingFormat:@"%d", cursor];
+            NSLog( temp );
+        }
+        objectFromKey = [results objectForKey:@"player"];
+        if (objectFromKey != nil)
+        {
+            //player = objectFromKey;
+            //NSLog(isMyTurn);
+        }
+        objectFromKey = [results objectForKey:@"type"];
+        if (objectFromKey != nil)
+        {
+            type = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+            NSLog(type);
+        }
+        objectFromKey = [results objectForKey:@"timestamp"];
+        if (objectFromKey != nil)
+        {
+            timestamp = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+            NSLog(timestamp);
+        }
+        objectFromKey = [results objectForKey:@"board"];
+        if (objectFromKey != nil)
+        {
+            //markString = objectFromKey;
+            markString = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+            NSLog(objectFromKey);
+        }
+        objectFromKey = [results objectForKey:@"playerX"];
+        if (objectFromKey != nil)
+        {
+            if (game_id == [NSString stringWithFormat:@"%@", objectFromKey] )
+            {
+                NSLog(@"I am Xs");   
+                myMarkType = X;
+            }
+            else
+            {
+                NSLog(@"I am Os");                
+                myMarkType = O;
+            }
+        }
+        objectFromKey = [results objectForKey:@"playerO"];
+        if (objectFromKey != nil)
+        {
+            if (game_id == [NSString stringWithFormat:@"%@", objectFromKey] )
+            {
+                NSLog(@"I am Os");   
+                myMarkType = X;
+            }
+            else
+            {
+                NSLog(@"I am Xs");                
+                myMarkType = O;
+            }
+        }
     }
-    objectFromKey = [results objectForKey:@"game_id"];
-    if (objectFromKey != nil)
-    {
-        game_id = objectFromKey;
-        NSLog(game_id);
-    }
-    objectFromKey = [results objectForKey:@"client_id"];
-    if (objectFromKey != nil)
-    {
-        client_id = objectFromKey;
-        NSLog(client_id);
-    }
-    objectFromKey = [results objectForKey:@"cursor"];
-    if (objectFromKey != nil)
-    {
-        NSString * temp = objectFromKey;
-        cursor = [temp intValue];
-        NSLog(cursor);
-    }
-    objectFromKey = [results objectForKey:@"player"];
-    if (objectFromKey != nil)
-    {
-        //player = objectFromKey;
-        NSLog(client_id);
-    }
-    if(cursor == 0 )
-    {
-        [self getBoardUpdate];
-    }
-    // Use when fetching binary data
-//    NSData *responseData = [request responseData];
+    [self getBoardUpdate];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     NSError *error = [request error];
-    //NSString * errStr = error.domain;
-    //int i = error.code;
+    NSString * errStr = error.domain;
+    int i = error.code;
+    NSLog([NSString stringWithFormat:@"requestFailed: %d %@", i, errStr]);
+    [self getBoardUpdate];
 }
-
 @end
