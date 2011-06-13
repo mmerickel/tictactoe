@@ -162,6 +162,9 @@ class TicTacToe(Game):
             **result
         )
 
+        if self.winner:
+            self.end('player %s won' % self.winner)
+
     def _check_winner(self):
         b = self.board
         # check horizontal
