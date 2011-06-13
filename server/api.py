@@ -48,7 +48,6 @@ def play_view(request):
     if client:
         # log the client out, killing their current games
         quit_view(request)
-        client.name = name
     else:
         client_id = client_id or create_client_id()
         client = Client(client_id, name)
