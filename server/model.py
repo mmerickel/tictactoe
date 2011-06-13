@@ -123,6 +123,15 @@ class TicTacToe(Game):
             playerY=self.playerY.name,
         )
 
+    def end(self, reason):
+        self.add_update(
+            type='end',
+            reason=reason,
+        )
+        def cleanup():
+            del games[self.id]
+        gevent.spawn_later(86400, cleanup) # cleanup in a day
+
     def is_ready(self):
         return len(self.players) == 2
 
