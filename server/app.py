@@ -12,17 +12,3 @@ def make_app(global_conf, **settings):
 
     return config.make_wsgi_app()
 
-if __name__ == '__main__':
-    import gevent.monkey; gevent.monkey.patch_all()
-    import gevent.pywsgi
-
-    settings = {
-    }
-    app = make_app({}, **settings)
-
-    listen = 'localhost', 8080
-    server = gevent.pywsgi.WSGIServer(listen, app)
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        server.kill()
