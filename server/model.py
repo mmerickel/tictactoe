@@ -129,6 +129,8 @@ class TicTacToe(Game):
             reason=reason,
         )
         def cleanup():
+            if self in pending_games:
+                pending_games.remove(self)
             del games[self.id]
         gevent.spawn_later(86400, cleanup) # cleanup in a day
 
