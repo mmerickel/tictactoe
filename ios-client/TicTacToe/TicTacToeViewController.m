@@ -71,7 +71,7 @@
     playAreaView.frame = CGRectMake(0.0f, newYPos, 
                                     playAreaView.frame.size.width, 
                                     playAreaView.frame.size.height);    
-    self.view.frame = playAreaView.frame;
+    //self.view.frame = playAreaView.frame;
     [playAreaView release];
 
     markString = [Model sharedModel].markString;
@@ -150,7 +150,7 @@
         playAreaView.frame = CGRectMake(0, maxYPosOfBoard, 
                                         playAreaView.frame.size.width, 
                                         playAreaView.frame.size.height);    
-        self.view.frame = playAreaView.frame;
+        //self.view.frame = playAreaView.frame;
         [playAreaView release];
     }
     
@@ -195,7 +195,7 @@
                 playAreaView.frame = CGRectMake(deltaX, deltaY, 
                                                 playAreaView.frame.size.width, 
                                                 playAreaView.frame.size.height);    
-                self.view.frame = playAreaView.frame;
+                //self.view.frame = playAreaView.frame;
                 [playAreaView release];
             }
             else
@@ -219,7 +219,7 @@
                     selectedView.frame = CGRectMake(deltaX, deltaY, 
                                                     selectedView.frame.size.width, 
                                                     selectedView.frame.size.height);    
-                    self.view.frame = selectedView.frame;
+                    //self.view.frame = selectedView.frame;
                     bLocateCursor = YES;
                 }
             }
@@ -253,6 +253,7 @@
 
 - (IBAction) backgroundButton:(id)sender
 {
+    NSLog(@"backgroundButton touched...");
     [displayName resignFirstResponder];
 }
 - (IBAction) textFieldDoneEditing:(id)sender
@@ -263,6 +264,11 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    //Dismiss the keyboard, if it is shown
+    if([displayName isFirstResponder]) {
+        [displayName resignFirstResponder];
+    }
+        
     int xThird = 0;
     int yThird = 0;
     BOOL selectable = NO;
@@ -365,6 +371,8 @@
 
 - (void) receiveTestNotification:(NSNotification *) notification
 {
+    
+    NSLog(@"Received test notification in TicTacToeViewController");
     if ([[notification name] isEqualToString:@"TestNotification"])
     {
         NSDictionary * local = [notification userInfo];
@@ -375,13 +383,21 @@
             objectFromKey = [local objectForKey:@"name"];
             if (objectFromKey != nil)
             {
-                displayName = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+                displayName.text = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
             }
             objectFromKey = [local objectForKey:@"game_id"];
             if (objectFromKey != nil)
             {
                 [buttonText setTitle:@"Quit" forState:UIControlStateNormal] ;
                 [buttonText setTitle:@"Quit" forState:UIControlStateSelected] ;
+            }
+            objectFromKey = [local objectForKey:@"board"];
+            if(objectFromKey != nil) 
+            {
+                //NSLog(@"Board: %@", objectFromKey);
+                markString = [objectFromKey retain];
+                [self paintBoardState];   
+                //[self markUpBoard];
             }
             //objectFromKey = [local objectForKey:@"client_id"];
         }

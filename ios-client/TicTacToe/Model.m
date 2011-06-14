@@ -74,13 +74,13 @@ static Model* _sharedModel = nil;
     
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:@"1234" forKey:@"client_id"]; //920d15a9a2204d8bbc553ef94f6d6773
+    //[request setPostValue:@"1234" forKey:@"client_id"]; //920d15a9a2204d8bbc553ef94f6d6773
     [request setPostValue:myName forKey:@"name"];
 
     [request setCompletionBlock:^{
         NSString *responseString = [request responseString];
         id objectFromKey = nil;
-        NSLog(responseString);
+        NSLog(@"%@", responseString);
         
         // Store incoming data into a string
         NSString *jsonString = [NSString stringWithString:responseString];
@@ -96,19 +96,19 @@ static Model* _sharedModel = nil;
             if (objectFromKey != nil)
             {
                 myName = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
-                NSLog(myName);
+                NSLog(@"%@", myName);
             }
             objectFromKey = [results objectForKey:@"game_id"];
             if (objectFromKey != nil)
             {
                 game_id = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
-                NSLog(game_id);
+                NSLog(@"%@", game_id);
             }
             objectFromKey = [results objectForKey:@"client_id"];
             if (objectFromKey != nil)
             {
                 client_id = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
-                NSLog([@"client_id is " stringByAppendingFormat:@"%d", client_id]);
+                NSLog(@"client_id is %@", client_id);
             }
         }
     }];
@@ -167,11 +167,14 @@ static Model* _sharedModel = nil;
     
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    [request setPostValue:@"client_id" forKey:client_id];
-    [request setPostValue:@"position" forKey:posStr];
+    
+    [request setPostValue:client_id forKey:@"client_id"];
+    [request setPostValue:posStr forKey:@"position"];
     
     [request setDelegate:self];
     [request startAsynchronous];    
+    
+    return YES;
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -180,7 +183,7 @@ static Model* _sharedModel = nil;
     
     // Store incoming data into a string
     NSString *jsonString = [request responseString];
-    NSLog(jsonString);
+    NSLog(@"%@", jsonString);
     
     // Create a dictionary from the JSON string
     NSDictionary *results = [jsonString JSONValue];
