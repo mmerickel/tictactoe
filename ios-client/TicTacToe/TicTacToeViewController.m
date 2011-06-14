@@ -16,7 +16,7 @@
 
 @synthesize displayName;
 @synthesize buttonText;
-
+@synthesize textArea;
 
 - (void) paintBoardState
 {
@@ -219,7 +219,6 @@
                     selectedView.frame = CGRectMake(deltaX, deltaY, 
                                                     selectedView.frame.size.width, 
                                                     selectedView.frame.size.height);    
-                    //self.view.frame = selectedView.frame;
                     bLocateCursor = YES;
                 }
             }
@@ -237,9 +236,14 @@
 
 - (IBAction) connectButton;
 {
-    //buttonText.@"Connecting"];
-    //[buttonText setTitle:@"Connecting" forState:UIControlStateNormal] ;
-    [[Model sharedModel] login];
+    if([[buttonText currentTitle] isEqualToString:@"Quit"] )
+    {
+        [[Model sharedModel] quit];
+    }
+    if([[buttonText currentTitle] isEqualToString:@"Connect"] )
+    {
+        [[Model sharedModel] loginname:displayName.text];
+    }
 }
 - (IBAction) enterText
 {
@@ -366,7 +370,7 @@
 
 - (void) receiveTestNotification:(NSNotification *) notification
 {
-    
+    NSString * status = @"";
     NSLog(@"Received test notification in TicTacToeViewController");
     if ([[notification name] isEqualToString:@"TestNotification"])
     {
@@ -394,7 +398,22 @@
                 [self paintBoardState];   
                 //[self markUpBoard];
             }
-            //objectFromKey = [local objectForKey:@"client_id"];
+            objectFromKey = [local objectForKey:@"type"];
+            if (objectFromKey != nil)
+            {
+                status = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+                textArea.text = status;
+                //type = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+                //NSLog(type);
+            }
+            objectFromKey = [local objectForKey:@"reason"];
+            if (objectFromKey != nil)
+            {
+                status = [NSString stringWithFormat:@"%@: %@", status, [[NSString stringWithFormat:@"%@", objectFromKey] retain]];
+                textArea.text = status;
+                //type = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+                //NSLog(type);
+            }
         }
 
     }

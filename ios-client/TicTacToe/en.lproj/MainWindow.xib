@@ -14,12 +14,12 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBUIView</string>
 			<string>IBProxyObject</string>
-			<string>IBUIViewController</string>
 			<string>IBUICustomObject</string>
-			<string>IBUILabel</string>
-			<string>IBUITextField</string>
+			<string>IBUIViewController</string>
 			<string>IBUIWindow</string>
+			<string>IBUITextField</string>
 			<string>IBUIButton</string>
+			<string>IBUILabel</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -57,7 +57,7 @@
 							<string key="NSFrame">{{20, 59}, {280, 37}}</string>
 							<reference key="NSSuperview" ref="689232882"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="489432047"/>
+							<reference key="NSNextKeyView" ref="133720369"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIContentHorizontalAlignment">0</int>
@@ -110,10 +110,10 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</object>
-						<object class="IBUILabel" id="489432047">
+						<object class="IBUILabel" id="133720369">
 							<reference key="NSNextResponder" ref="689232882"/>
 							<int key="NSvFlags">292</int>
-							<string key="NSFrame">{{20, 104}, {280, 35}}</string>
+							<string key="NSFrame">{{20, 99}, {280, 32}}</string>
 							<reference key="NSSuperview" ref="689232882"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
@@ -135,7 +135,7 @@
 					<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView"/>
+					<reference key="NSNextKeyView" ref="102007037"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">1</int>
 						<bytes key="NSRGB">MC40NDk0MDQ4MzU3IDEgMC42MTIwNzE4NzE4AA</bytes>
@@ -228,6 +228,14 @@
 					</object>
 					<int key="connectionID">39</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">textArea</string>
+						<reference key="source" ref="943309135"/>
+						<reference key="destination" ref="133720369"/>
+					</object>
+					<int key="connectionID">43</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -269,9 +277,9 @@
 						<reference key="object" ref="689232882"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="489432047"/>
 							<reference ref="102007037"/>
 							<reference ref="102127922"/>
+							<reference ref="133720369"/>
 						</object>
 						<reference key="parent" ref="943309135"/>
 					</object>
@@ -286,14 +294,14 @@
 						<reference key="parent" ref="689232882"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">20</int>
-						<reference key="object" ref="489432047"/>
-						<reference key="parent" ref="689232882"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">12</int>
 						<reference key="object" ref="117978783"/>
 						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">42</int>
+						<reference key="object" ref="133720369"/>
+						<reference key="parent" ref="689232882"/>
 					</object>
 				</object>
 			</object>
@@ -310,10 +318,10 @@
 					<string>12.IBPluginDependency</string>
 					<string>18.IBPluginDependency</string>
 					<string>19.IBPluginDependency</string>
-					<string>20.IBPluginDependency</string>
 					<string>21.IBPluginDependency</string>
 					<string>3.CustomClassName</string>
 					<string>3.IBPluginDependency</string>
+					<string>42.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -327,8 +335,8 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>TicTacToeAppDelegate</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
@@ -344,7 +352,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">39</int>
+			<int key="maxID">43</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -444,11 +452,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>buttonText</string>
 							<string>displayName</string>
+							<string>textArea</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIButton</string>
 							<string>UITextField</string>
+							<string>UILabel</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -457,6 +467,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>buttonText</string>
 							<string>displayName</string>
+							<string>textArea</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -467,6 +478,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">displayName</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">textArea</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 						</object>
 					</object>

@@ -67,10 +67,26 @@ static Model* _sharedModel = nil;
     
 	return self;
 }
-- (void) login
+
+- (void) quit
+{
+    NSString* urlString = 
+    @"http://aws.merickel.org/tictactoe/api/quit";
+    
+    
+    NSLog(urlString);
+    NSLog(client_id);
+
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setPostValue:client_id forKey:@"client_id"];
+    [request startAsynchronous];  
+}
+- (void) loginname:(NSString*)name
 {
     NSString* urlString = 
     @"http://aws.merickel.org/tictactoe/api/play";
+    myName = name;
     
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -208,12 +224,11 @@ static Model* _sharedModel = nil;
         {
             //markString = objectFromKey;
             markString = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
-            NSLog(objectFromKey);
+//            NSLog(objectFromKey);
         }
         objectFromKey = [results objectForKey:@"playerX"];
         if (objectFromKey != nil)
         {
-            NSLog(myName); 
             NSString * temp = [NSString stringWithFormat:@"%@", objectFromKey];
             if ([myName isEqualToString:temp] )
             {

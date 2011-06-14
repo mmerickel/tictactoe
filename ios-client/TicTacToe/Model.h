@@ -51,8 +51,8 @@ typedef enum
 @property (readonly) int cursor;
 
 +(Model*)sharedModel;
-- (void) login;
-//- (void) getStatus;
+- (void) loginname:(NSString*)name;
+- (void) quit;
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;
 - (void) getBoardUpdate;

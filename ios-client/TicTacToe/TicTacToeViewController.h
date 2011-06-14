@@ -18,9 +18,11 @@
     UIImageView * selectedView;
     IBOutlet UITextField * displayName;
     IBOutlet UIButton * buttonText;
+    IBOutlet UILabel * textArea;
 }
 @property (nonatomic, retain) UITextField *  displayName;
 @property (nonatomic, retain) UIButton *  buttonText;
+@property (nonatomic, retain) UILabel * textArea;
 
 @property float maxYPosOfBoard;
 @property float oneThirdOfBoard;
