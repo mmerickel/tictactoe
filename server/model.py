@@ -175,12 +175,13 @@ class TicTacToe(Game):
         b = self.board
         # check horizontal
         for i in range(3):
-            if b[3*i] == b[3*i+1] == b[3*i+2]: return True
+            if '_' != b[3*i] == b[3*i+1] == b[3*i+2]:
+                return True
         # check vertical
         for i in range(3):
-            if b[i] == b[3+i] == b[6+i]: return True
+            if '_' != b[i] == b[3+i] == b[6+i]: return True
         # check diagonals
-        if b[0] == b[4] == b[8]: return True
-        if b[2] == b[4] == b[6]: return True
+        if '_' != b[0] == b[4] == b[8]: return True
+        if '_' != b[2] == b[4] == b[6]: return True
         return False
 
