@@ -193,10 +193,6 @@
 		AAF304741399892A008765FA = {
 			isa = PBXGroup;
 			children = (
-				AAF3059913A2B60C008765FA /* libz.1.2.3.dylib */,
-				AAF3059713A2B5F2008765FA /* MobileCoreServices.framework */,
-				AAF3059513A2B5D9008765FA /* SystemConfiguration.framework */,
-				AAF3059313A2B5C5008765FA /* CFNetwork.framework */,
 				AAF304891399892B008765FA /* TicTacToe */,
 				AAF304821399892B008765FA /* Frameworks */,
 				AAF304801399892B008765FA /* Products */,
@@ -214,6 +210,10 @@
 		AAF304821399892B008765FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAF3059913A2B60C008765FA /* libz.1.2.3.dylib */,
+				AAF3059713A2B5F2008765FA /* MobileCoreServices.framework */,
+				AAF3059513A2B5D9008765FA /* SystemConfiguration.framework */,
+				AAF3059313A2B5C5008765FA /* CFNetwork.framework */,
 				AAF304831399892B008765FA /* UIKit.framework */,
 				AAF304851399892B008765FA /* Foundation.framework */,
 				AAF304871399892B008765FA /* CoreGraphics.framework */,
@@ -227,13 +227,13 @@
 				AAF305CA13A2C281008765FA /* JSON */,
 				AAF3057913A2B344008765FA /* ASI */,
 				AAF3053D139EA14B008765FA /* Resources */,
+				AAF3048A1399892B008765FA /* Supporting Files */,
 				AAF304921399892B008765FA /* TicTacToeAppDelegate.h */,
 				AAF304931399892B008765FA /* TicTacToeAppDelegate.m */,
 				AAF304951399892B008765FA /* MainWindow.xib */,
 				AAF304981399892B008765FA /* TicTacToeViewController.h */,
 				AAF304991399892B008765FA /* TicTacToeViewController.m */,
 				AAF3049B1399892B008765FA /* TicTacToeViewController.xib */,
-				AAF3048A1399892B008765FA /* Supporting Files */,
 				AAF3057213A28F2D008765FA /* Model.h */,
 				AAF3057313A28F2E008765FA /* Model.m */,
 			);
@@ -579,6 +579,7 @@
 				AAF304A21399892B008765FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
