@@ -74,7 +74,7 @@ static Model* _sharedModel = nil;
     
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    //[request setPostValue:@"1234" forKey:@"client_id"]; //920d15a9a2204d8bbc553ef94f6d6773
+    //[request setPostValue:@"1234" forKey:@"client_id"]; 
     [request setPostValue:myName forKey:@"name"];
 
     [request setCompletionBlock:^{
@@ -125,22 +125,6 @@ static Model* _sharedModel = nil;
     
 }
 
-/*
-- (void) getStatus
-{
-    NSString* urlString ;
-
-    NSLog(game_id);
-    urlString = [NSString stringWithFormat:@"http://aws.merickel.org/tictactoe/api/updates/%@", game_id]; 
-
-    NSLog(urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    
-    [request setDelegate:self];
-    [request startAsynchronous];    
-}
-*/
 
 - (void) getBoardUpdate
 {
@@ -229,29 +213,23 @@ static Model* _sharedModel = nil;
         objectFromKey = [results objectForKey:@"playerX"];
         if (objectFromKey != nil)
         {
-            if (game_id == [NSString stringWithFormat:@"%@", objectFromKey] )
+            NSLog(myName); 
+            NSString * temp = [NSString stringWithFormat:@"%@", objectFromKey];
+            if ([myName isEqualToString:temp] )
             {
                 NSLog(@"I am Xs");   
                 myMarkType = X;
             }
-            else
-            {
-                NSLog(@"I am Os");                
-                myMarkType = O;
-            }
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self];
         }
         objectFromKey = [results objectForKey:@"playerO"];
         if (objectFromKey != nil)
         {
-            if (game_id == [NSString stringWithFormat:@"%@", objectFromKey] )
+            NSLog(myName); 
+            NSString * temp = [NSString stringWithFormat:@"%@", objectFromKey];
+            if ([myName isEqualToString:temp] )
             {
                 NSLog(@"I am Os");   
-                myMarkType = X;
-            }
-            else
-            {
-                NSLog(@"I am Xs");                
                 myMarkType = O;
             }
         }

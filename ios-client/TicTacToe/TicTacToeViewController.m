@@ -91,14 +91,14 @@
     }
     if( [markString characterAtIndex:3] == [markString characterAtIndex:4] &&
        [markString characterAtIndex:3] == [markString characterAtIndex:5]  &&
-       [markString characterAtIndex:0] != '_')
+       [markString characterAtIndex:3] != '_')
 
     {
         image = [UIImage imageNamed:@"(0,1)(2,1).png"];
     }
     if( [markString characterAtIndex:6] == [markString characterAtIndex:7] &&
        [markString characterAtIndex:6] == [markString characterAtIndex:8]  &&
-       [markString characterAtIndex:0] != '_')
+       [markString characterAtIndex:6] != '_')
 
     {
         image = [UIImage imageNamed:@"(0,2)(2,2).png"];
@@ -112,14 +112,14 @@
     }
     if( [markString characterAtIndex:1] == [markString characterAtIndex:4] &&
        [markString characterAtIndex:1] == [markString characterAtIndex:7]  &&
-       [markString characterAtIndex:0] != '_')
+       [markString characterAtIndex:1] != '_')
 
     {
         image = [UIImage imageNamed:@"(1,0)(1,2).png"];
     }
     if( [markString characterAtIndex:2] == [markString characterAtIndex:5] &&
        [markString characterAtIndex:2] == [markString characterAtIndex:8]  &&
-       [markString characterAtIndex:0] != '_')
+       [markString characterAtIndex:2] != '_')
 
     {
         image = [UIImage imageNamed:@"(2,0)(2,2).png"];
@@ -135,7 +135,7 @@
     
     if( [markString characterAtIndex:2] == [markString characterAtIndex:4] &&
        [markString characterAtIndex:2] == [markString characterAtIndex:6]  &&
-       [markString characterAtIndex:0] != '_')
+       [markString characterAtIndex:2] != '_')
 
     {
         image = [UIImage imageNamed:@"(0,2)(2,0).png"];
@@ -240,11 +240,6 @@
     //buttonText.@"Connecting"];
     //[buttonText setTitle:@"Connecting" forState:UIControlStateNormal] ;
     [[Model sharedModel] login];
-    if ([[Model sharedModel] game_id].length > 1)
-    {
-        //[buttonText setText:@"Waiting for game to start."];
-        [buttonText setTitle:@"Waiting" forState:UIControlStateNormal] ;
-    }
 }
 - (IBAction) enterText
 {
@@ -389,7 +384,7 @@
             if (objectFromKey != nil)
             {
                 [buttonText setTitle:@"Quit" forState:UIControlStateNormal] ;
-                [buttonText setTitle:@"Quit" forState:UIControlStateSelected] ;
+                //[buttonText setTitle:@"Quit" forState:UIControlStateSelected] ;
             }
             objectFromKey = [local objectForKey:@"board"];
             if(objectFromKey != nil) 
