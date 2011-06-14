@@ -15,10 +15,10 @@ pending_games = deque()
 games = {}
 
 class Client(object):
-    def __init__(self, id, name, game_id=None):
+    def __init__(self, id, name, game=None):
         self.id = id
         self.name = name
-        self.game_id = game_id
+        self.game = game
 
 class Observer(Queue):
     def __init__(self, *args, **kw):
@@ -130,6 +130,9 @@ class TicTacToe(Game):
             reason=reason,
         )
         def cleanup():
+            for p in self.players:
+                if p.game is self:
+                    p.game = None
             if self in pending_games:
                 pending_games.remove(self)
             del games[self.id]

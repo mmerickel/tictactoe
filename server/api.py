@@ -81,14 +81,14 @@ def play_view(request):
         games[game_id] = game
 
     # remember the client
-    client.game_id = game.id
+    client.game = game
     clients[client.id] = client
     client_names.add(client.name)
 
     return {
         'client_id': client.id,
         'name': client.name,
-        'game_id': client.game_id,
+        'game_id': game.id,
     }
 
 @view_config(route_name='api.quit', request_method='POST', renderer='json')
@@ -97,8 +97,10 @@ def quit_view(request):
     client = clients.get(client_id)
     if client is None:
         return INVALID_CLIENT_ID
+    if client.game is None:
+        return INVALID_GAME_ID
 
-    game = games[client.game_id]
+    game = games[client.game.id]
     game.remove_player(client)
     game.end('%s quit the game' % client.name)
 
@@ -114,8 +116,10 @@ def move_view(request):
     client = clients.get(client_id)
     if client is None:
         return INVALID_CLIENT_ID
+    if client.game is None:
+        return INVALID_GAME_ID
 
-    game = games[client.game_id]
+    game = games[client.game.id]
     if not game.check_move(client, position):
         return INVALID_MOVE
     game.move(position)
@@ -131,8 +135,10 @@ def chat_view(request):
     client = clients.get(client_id)
     if client is None:
         return INVALID_CLIENT_ID
+    if client.game is None:
+        return INVALID_GAME_ID
 
-    game = games[client.game_id]
+    game = games[client.game.id]
     game.chat(client, message)
 
     return {
@@ -143,7 +149,10 @@ def updates_view(request):
     game_id = request.matchdict['gameid']
     cursor = int(request.GET.get('cursor', 0))
 
-    game = games[game_id]
+    game = games.get(game_id)
+    if game is None:
+        return INVALID_GAME_ID
+
     r = Response()
     #r.content_encoding = 'chunked'
     r.app_iter = game.add_observer(cursor)
