@@ -114,14 +114,14 @@ class TicTacToe(Game):
         self.winner = None
 
         shuffle(self.players)
-        self.playerX, self.playerY = self.players
+        self.playerX, self.playerO = self.players
 
         self.add_update(
             type='status',
             board=''.join(self.board),
             turn=self.turn,
             playerX=self.playerX.name,
-            playerY=self.playerY.name,
+            playerO=self.playerO.name,
         )
 
     def end(self, reason):
