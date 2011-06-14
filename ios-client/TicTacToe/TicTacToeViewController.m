@@ -14,95 +14,13 @@
 @synthesize oneThirdOfBoard;
 @synthesize markSpacer;
 
-// load background
-// paint Xs or Os
-// return state: array, 0-8,  'x', 'o', or '_'
-// respond to touches to paint Xs or Os
-// respond to state change
-
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    int xThird = 0;
-    int yThird = 0;
-    BOOL selectable = NO;
-    
-    NSUInteger numTaps = [[touches anyObject] tapCount];
-    
-    CGPoint pt = [[touches anyObject] locationInView:self.view];
-    
-    // Are we on the board?
-    if (pt.y >= [self maxYPosOfBoard])
-    {
-        xThird = (pt.x/oneThirdOfBoard) + 1;
-        yThird = ((pt.y-maxYPosOfBoard)/oneThirdOfBoard) + 1;
-    
-        selectable = [self isSelectableX:xThird Y:yThird];
-    
-        if( selectable )
-        {
-            if (numTaps < 2)
-            {   
-                
-                    // move the selection cursor to this place
-                    
-                    int deltaX = (((xThird-1)%3) * oneThirdOfBoard) + markSpacer;
-                    int deltaY = maxYPosOfBoard + ((((yThird-1)%3)) * oneThirdOfBoard) + markSpacer;
-                    selectedView.frame = CGRectMake(deltaX, deltaY, 
-                                                    selectedView.frame.size.width, 
-                                                    selectedView.frame.size.height); 
-                    //[self.view bringSubviewToFront: selectedView];
-                    //self.view.frame = selectedView.frame;
-
-                    [selectedView setHidden: NO];
-            }
-            else
-            {
-                int movePos = ( (yThird-1) * 3 ) + (xThird-1);
-                [[Model sharedModel] movePosition:movePos];
-            }
-        }
-        else
-        {
-            [selectedView setHidden: YES];
-        }
-    }
-}
-
-- (BOOL) isSelectableX:(int)X Y:(int)Y
-{
-    BOOL retVal = NO;
-    int col = 0;
-    int row = 0;
-    char uScore;
-    
-//    int len = [markString length];
-    for (int ii=0; ii < 9; ii++) 
-    {
-       if ( (col+1) == X && (row+1) == Y)
-        {
-            uScore = [markString characterAtIndex:ii];
-            if( [markString characterAtIndex:ii] == '_')
-            {
-                retVal = YES;
-            }
-            break;
-        }
-        col++;
-        if (col>2) 
-        {
-            col = 0;
-            row++;
-            
-        }
-    }
-    return retVal;
-}
+@synthesize displayName;
+@synthesize buttonText;
 
 
 - (void) paintBoardState
 {
     UIImageView * playAreaView;
-    NSString * localMarkString = @"XOXO_OXOX";
     CGRect frameRect;
     CGPoint rectPoint;
     float newYPos;
@@ -156,8 +74,6 @@
     self.view.frame = playAreaView.frame;
     [playAreaView release];
 
-    localMarkString = @"XXXo__Xoo";
-    localMarkString = [localMarkString uppercaseString];
     markString = [Model sharedModel].markString;
     [self markUpBoard];
     [self checkWinner];
@@ -319,6 +235,106 @@
     }
 }
 
+- (IBAction) connectButton;
+{
+    //buttonText.@"Connecting"];
+    //[buttonText setTitle:@"Connecting" forState:UIControlStateNormal] ;
+    [[Model sharedModel] login];
+    if ([[Model sharedModel] game_id].length > 1)
+    {
+        //[buttonText setText:@"Waiting for game to start."];
+        [buttonText setTitle:@"Waiting" forState:UIControlStateNormal] ;
+    }
+}
+- (IBAction) enterText
+{
+    [[Model sharedModel] myName:displayName];
+}
+
+- (IBAction) backgroundButton:(id)sender
+{
+    [displayName resignFirstResponder];
+}
+- (IBAction) textFieldDoneEditing:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    int xThird = 0;
+    int yThird = 0;
+    BOOL selectable = NO;
+    
+    NSUInteger numTaps = [[touches anyObject] tapCount];
+    
+    CGPoint pt = [[touches anyObject] locationInView:self.view];
+    
+    // Are we on the board?
+    if (pt.y >= [self maxYPosOfBoard])
+    {
+        xThird = (pt.x/oneThirdOfBoard) + 1;
+        yThird = ((pt.y-maxYPosOfBoard)/oneThirdOfBoard) + 1;
+        
+        selectable = [self isSelectableX:xThird Y:yThird];
+        
+        if( selectable )
+        {
+            if (numTaps < 2)
+            {   
+                // move the selection cursor to this place
+                int deltaX = (((xThird-1)%3) * oneThirdOfBoard) + markSpacer;
+                int deltaY = maxYPosOfBoard + ((((yThird-1)%3)) * oneThirdOfBoard) + markSpacer;
+                selectedView.frame = CGRectMake(deltaX, deltaY, 
+                                                selectedView.frame.size.width, 
+                                                selectedView.frame.size.height); 
+                
+                [selectedView setHidden: NO];
+            }
+            else
+            {
+                int movePos = ( (yThird-1) * 3 ) + (xThird-1);
+                [[Model sharedModel] movePosition:movePos];
+            }
+        }
+        else
+        {
+            [selectedView setHidden: YES];
+        }
+    }
+}
+
+- (BOOL) isSelectableX:(int)X Y:(int)Y
+{
+    BOOL retVal = NO;
+    int col = 0;
+    int row = 0;
+    char uScore;
+    
+    //    int len = [markString length];
+    for (int ii=0; ii < 9; ii++) 
+    {
+        if ( (col+1) == X && (row+1) == Y)
+        {
+            uScore = [markString characterAtIndex:ii];
+            if( [markString characterAtIndex:ii] == '_')
+            {
+                retVal = YES;
+            }
+            break;
+        }
+        col++;
+        if (col>2) 
+        {
+            col = 0;
+            row++;
+            
+        }
+    }
+    return retVal;
+}
+
 - (void)dealloc
 {
     [super dealloc];
@@ -327,6 +343,7 @@
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
@@ -338,10 +355,39 @@
 - (void)viewDidLoad
 {
     [self paintBoardState];    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveTestNotification:) 
+                                                 name:@"TestNotification"
+                                               object:nil];// any object can call this
+
     [super viewDidLoad];
 }
 
+- (void) receiveTestNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"TestNotification"])
+    {
+        NSDictionary * local = [notification userInfo];
+        id objectFromKey = nil;
+        objectFromKey = [local objectForKey:@"server error"];
+        if (objectFromKey == nil)
+        {
+            objectFromKey = [local objectForKey:@"name"];
+            if (objectFromKey != nil)
+            {
+                displayName = [[NSString stringWithFormat:@"%@", objectFromKey] retain];
+            }
+            objectFromKey = [local objectForKey:@"game_id"];
+            if (objectFromKey != nil)
+            {
+                [buttonText setTitle:@"Quit" forState:UIControlStateNormal] ;
+                [buttonText setTitle:@"Quit" forState:UIControlStateSelected] ;
+            }
+            //objectFromKey = [local objectForKey:@"client_id"];
+        }
 
+    }
+}
 
 - (void)viewDidUnload
 {

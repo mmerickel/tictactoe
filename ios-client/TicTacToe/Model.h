@@ -46,7 +46,7 @@ typedef enum
 
 @property (retain, readonly) NSString* client_id;
 @property (retain, readonly) NSString* game_id;
-@property (retain, readonly) NSString* myName;
+@property (retain) NSString* myName;
 
 @property (readonly) int cursor;
 

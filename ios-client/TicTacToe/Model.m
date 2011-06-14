@@ -62,7 +62,7 @@ static Model* _sharedModel = nil;
         gameState = Pre_Connect;
         cursor = 0;
         
-        [self login];
+        //[self login];
 	}
     
 	return self;
@@ -75,7 +75,7 @@ static Model* _sharedModel = nil;
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     [request setPostValue:@"1234" forKey:@"client_id"]; //920d15a9a2204d8bbc553ef94f6d6773
-    //[request setPostValue:@"name" forKey:@"Dan"];
+    [request setPostValue:myName forKey:@"name"];
 
     [request setCompletionBlock:^{
         NSString *responseString = [request responseString];
@@ -87,6 +87,7 @@ static Model* _sharedModel = nil;
         
         // Create a dictionary from the JSON string
         NSDictionary *results = [jsonString JSONValue];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self userInfo:results];
         
         objectFromKey = [results objectForKey:@"server error"];
         if (objectFromKey == nil)
@@ -152,7 +153,7 @@ static Model* _sharedModel = nil;
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setShouldAttemptPersistentConnection:YES];
-    [request setPersistentConnectionTimeoutSeconds:32];
+    [request setPersistentConnectionTimeoutSeconds:60];
 
     [request setDelegate:self];
     [request startAsynchronous];        
@@ -176,15 +177,15 @@ static Model* _sharedModel = nil;
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     id objectFromKey = nil;
-    // Use when fetching text data
-    NSString *responseString = [request responseString];
-    NSLog(responseString);
     
     // Store incoming data into a string
-    NSString *jsonString = [NSString stringWithString:responseString];
+    NSString *jsonString = [request responseString];
+    NSLog(jsonString);
     
     // Create a dictionary from the JSON string
     NSDictionary *results = [jsonString JSONValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self userInfo:results];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self];
     
     objectFromKey = [results objectForKey:@"error"];
     if (objectFromKey == nil)
@@ -235,6 +236,7 @@ static Model* _sharedModel = nil;
                 NSLog(@"I am Os");                
                 myMarkType = O;
             }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TestNotification" object:self];
         }
         objectFromKey = [results objectForKey:@"playerO"];
         if (objectFromKey != nil)

@@ -16,13 +16,24 @@
     float markSpacer;
     NSString * markString;
     UIImageView * selectedView;
+    IBOutlet UITextField * displayName;
+    IBOutlet UIButton * buttonText;
 }
- @property float maxYPosOfBoard;
- @property float oneThirdOfBoard;
- @property float markSpacer;
+@property (nonatomic, retain) UITextField *  displayName;
+@property (nonatomic, retain) UIButton *  buttonText;
+
+@property float maxYPosOfBoard;
+@property float oneThirdOfBoard;
+@property float markSpacer;
 
 - (void) paintBoardState;
 - (void) markUpBoard;
 - (void) checkWinner;
 - (BOOL) isSelectableX:(int)X Y:(int)Y;
+- (IBAction) connectButton;
+- (IBAction) enterText;
+- (IBAction) backgroundButton:(id)sender;
+- (IBAction) textFieldDoneEditing:(id)sender;
+- (void) receiveTestNotification:(NSNotification *) notification;
+
 @end
