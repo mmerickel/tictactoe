@@ -27,10 +27,8 @@ class Observer(Queue):
         Queue.__init__(self, *args, **kw)
         def reaper():
             self.event.clear()
-            if self.event.wait(30):
-                gevent.spawn(reaper)
-            else:
-                game.remove_observer(self)
+            self.event.wait(30)
+            game.remove_observer(self)
         gevent.spawn(reaper)
 
     def get(self, *args, **kw):

@@ -1,5 +1,4 @@
 import logging
-import traceback
 import uuid
 
 from pyramid.response import Response
@@ -154,7 +153,7 @@ def updates_view(request):
         return INVALID_GAME_ID
 
     r = Response()
-    #r.content_encoding = 'chunked'
+    r.content_type = 'application/json'
     r.app_iter = game.add_observer(cursor)
     return r
 
